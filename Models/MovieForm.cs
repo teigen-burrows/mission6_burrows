@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mission6_burrows.Models
 {
-    public class MovieForm
+    public class MovieForm // creates the form
     {
-        [Key]
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key] // creates the primary key
+        [Required] // makes field required
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // allows database to generate the primary key on creation
         public int MovieFormId { get; set; }
 
         [Required]

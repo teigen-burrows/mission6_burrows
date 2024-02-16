@@ -8,6 +8,6 @@ namespace mission6_burrows.Models
         {
         }
 
-        public DbSet<MovieForm> Movies { get; set; } 
+        public DbSet<MovieForm> Movies { get; set; } // creates database table
     }
 }
