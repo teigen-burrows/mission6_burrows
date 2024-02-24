@@ -7,8 +7,23 @@
 @model mission6_burrows.Models.MovieForm
 
 <form method="post">
+
+    @if (Model != null && Model.MovieFormId != 0)
+    {
+        <input type="hidden" asp-for="MovieFormId" />
+    }
+
     <label asp-for="Category">Category: </label>
-    <input asp-for="Category" required />
+    <select asp-for="Category">
+        <option value="">Select a Category </option>
+        @if (ViewBag.Categories != null)
+        {
+            foreach(Category c in ViewBag.Categories)
+            {
+                <option value+"@c.CategoryId">@c.CategoryName</option>
+            }
+        }
+    </select>
     <br />
     <br />
     <label asp-for="Title">Title: </label>
@@ -57,5 +72,8 @@
     <input asp-for="Notes" maxlength="25" />
     <br />
     <br />
+
+    @Html.ValidationMessageFor(m => m.Year)
+
     <input type="submit" value="Submit" />
 </form>
