@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Movies";
+    ViewData["Title"] = "Enter a Movie";
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -43,6 +43,14 @@
     <br />
     <label asp-for ="LentTo">Lent To: </label>
     <input asp-for="LentTo" />
+    <br />
+    <br />
+    <label asp-for="CopiedToPlex" for="copiedtoplex">Copied to Plex:</label>
+    <select asp-for="CopiedToPlex" id="copiedtoplex" name="copiedtoplex">
+        <option value=""> </option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
     <br />
     <br />
     <label asp-for ="Notes">Notes: </label>

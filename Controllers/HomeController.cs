@@ -32,6 +32,13 @@ namespace mission6_burrows.Controllers
             return View();
         }
 
+        public IActionResult Table() // generates the movie table view
+        {
+            _context.Movies
+                .OrderBy(x => x.Title).ToList();
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Movies(MovieForm response) // adds to database, saves response, prints confirmation view
         {
