@@ -7,7 +7,7 @@ namespace mission6_burrows.Models
     {
         [Key] // creates the primary key
         [Required] // makes field required
-        public int MovieFormId { get; set; }
+        public int MovieId { get; set; }
 
         [ForeignKey("CategoryId")]
         public int? CategoryId { get; set; }

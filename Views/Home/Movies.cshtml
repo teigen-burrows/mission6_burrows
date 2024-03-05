@@ -8,9 +8,9 @@
 
 <form method="post">
 
-    @if (Model != null && Model.MovieFormId != 0)
+    @if (Model != null && Model.MovieId != 0)
     {
-        <input type="hidden" asp-for="MovieFormId" />
+        <input type="hidden" asp-for="MovieId" />
     }
 
     <label asp-for="Category">Category: </label>

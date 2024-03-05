@@ -36,9 +36,8 @@ namespace mission6_burrows.Controllers
 
         public IActionResult Table() // generates the movie table view
         {
-            _context.Movies
-                .OrderBy(x => x.Title).ToList();
-            return View();
+            var stuff = _context.Movies.Include(x => x.Title).ToList();
+            return View("Table", stuff);
         }
 
         [HttpPost]
@@ -83,7 +82,7 @@ namespace mission6_burrows.Controllers
         public IActionResult Edit(int id)
         {
             var MovieToEdit = _context.Movies
-                .Single(x => x.MovieFormId == id);
+                .Single(x => x.MovieId == id);
 
             ViewBag.Categories = _context.Categories
                 .OrderBy(x => x.CategoryName)
@@ -103,7 +102,7 @@ namespace mission6_burrows.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var record = _context.Movies.Single(x => x.MovieFormId == id);
+            var record = _context.Movies.Single(x => x.MovieId == id);
             return View(record);
         }
 
