@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mission6_burrows.Models
 {
-    public class MovieForm // creates the form
+    public class Movie // creates the form
     {
         [Key] // creates the primary key
         [Required] // makes field required

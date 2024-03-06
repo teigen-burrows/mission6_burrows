@@ -41,7 +41,7 @@ namespace mission6_burrows.Controllers
         }
 
         [HttpPost]
-        public IActionResult Movies(MovieForm response) // adds to database, saves response, prints confirmation view
+        public IActionResult Movies(Movie response) // adds to database, saves response, prints confirmation view
         {
             _context.Movies.Add(response);
             _context.SaveChanges();
@@ -49,7 +49,7 @@ namespace mission6_burrows.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddMovie(MovieForm response)
+        public IActionResult AddMovie(Movie response)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace mission6_burrows.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(MovieForm response)
+        public IActionResult Edit(Movie response)
         {
             _context.Update(response);
             _context.SaveChanges();
@@ -107,7 +107,7 @@ namespace mission6_burrows.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(MovieForm movie)
+        public IActionResult Delete(Movie movie)
         {
             _context.Movies.Remove(movie);
             _context.SaveChanges();

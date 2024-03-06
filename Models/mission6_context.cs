@@ -8,12 +8,12 @@ namespace mission6_burrows.Models
         {
         }
 
-        public DbSet<MovieForm> Movies { get; set; } // creates database table
+        public DbSet<Movie> Movies { get; set; } // creates database table
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<MovieForm>().HasData(
+            modelBuilder.Entity<Movie>().HasData(
                 new Category { CategoryId = 1, CategoryName = "Miscellaneous"},
                 new Category { CategoryId = 2, CategoryName = "Drama" },
                 new Category { CategoryId = 3, CategoryName = "Television" },
