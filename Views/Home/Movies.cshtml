@@ -15,12 +15,11 @@
 
     <label asp-for="Category">Category: </label>
     <select asp-for="Category">
-        <option value="">Select a Category </option>
         @if (ViewBag.Categories != null)
         {
             foreach(Category c in ViewBag.Categories)
             {
-                <option value+"@c.CategoryId">@c.CategoryName</option>
+                <option value="@c.CategoryId">@c.CategoryName</option>
             }
         }
     </select>

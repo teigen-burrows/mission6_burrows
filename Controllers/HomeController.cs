@@ -16,8 +16,6 @@ namespace mission6_burrows.Controllers
             _context = blah;
         }
 
-        private readonly ILogger<HomeController> _logger;
-
         public IActionResult Index() // generates the home view
         {
             return View();
@@ -31,25 +29,18 @@ namespace mission6_burrows.Controllers
         [HttpGet]
         public IActionResult Movies() // generates the movie view
         {
+            ViewBag.Categories = _context.Categories.ToList();
             return View();
         }
 
         public IActionResult Table() // generates the movie table view
         {
-            var stuff = _context.Movies.Include(x => x.Title).ToList();
+            var stuff = _context.Movies.Include(x => x.Category).ToList();
             return View("Table", stuff);
         }
 
         [HttpPost]
-        public IActionResult Movies(Movie response) // adds to database, saves response, prints confirmation view
-        {
-            _context.Movies.Add(response);
-            _context.SaveChanges();
-            return View("Confirmation");
-        }
-
-        [HttpPost]
-        public IActionResult AddMovie(Movie response)
+        public IActionResult Movies(Movie response)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +78,7 @@ namespace mission6_burrows.Controllers
             ViewBag.Categories = _context.Categories
                 .OrderBy(x => x.CategoryName)
                 .ToList();
-            return View("AddMovie", MovieToEdit);
+            return View("Movies", MovieToEdit);
         }
 
         [HttpPost]
@@ -96,7 +87,7 @@ namespace mission6_burrows.Controllers
             _context.Update(response);
             _context.SaveChanges();
 
-            return RedirectToAction("AllMovies");
+            return RedirectToAction("Table");
         }
 
         [HttpGet]
@@ -112,7 +103,7 @@ namespace mission6_burrows.Controllers
             _context.Movies.Remove(movie);
             _context.SaveChanges();
 
-            return RedirectToAction("MovieList");
+            return RedirectToAction("Table");
         }
     }
 }
